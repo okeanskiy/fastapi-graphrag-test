@@ -9,6 +9,11 @@ def run_query(query: str) -> str:
 
 app = FastAPI()
 
+# say a hello world message text response at root
+@app.get("/")
+async def read_root():
+    return {"Hello": "World"}
+
 @app.get("/query")
 async def read_query(query: str):
     result = run_query(query)
