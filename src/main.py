@@ -3,7 +3,7 @@ from fastapi import FastAPI
 import subprocess
 
 def run_query(query: str) -> str:
-    command = f'python -m graphrag.query --root ./ragtest --method global "{query}"'
+    command = f'python -m graphrag.query --root ./ragtest --method local "{query}"'
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     return result.stdout
 
