@@ -1,4 +1,5 @@
 
+from pydantic import BaseModel
 from fastapi import FastAPI
 import subprocess
 
@@ -14,7 +15,10 @@ app = FastAPI()
 async def read_root():
     return {"Hello": "World"}
 
+class QueryModel(BaseModel):
+    query: str
+
 @app.post("/query")
-async def read_query(query: str):
-    result = run_query(query)
+async def read_query(query: QueryModel):
+    result = run_query(query.query)
     return {"result": result}
