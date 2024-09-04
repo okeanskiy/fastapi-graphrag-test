@@ -14,7 +14,7 @@ app = FastAPI()
 async def read_root():
     return {"Hello": "World"}
 
-@app.get("/query")
+@app.post("/query")
 async def read_query(query: str):
     result = run_query(query)
     return {"result": result}
